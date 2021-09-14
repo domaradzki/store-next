@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Item = styled.div`
   background: white;
-  border: 1px solid var(--offWhite);
+  border: 1px solid var(--white);
   box-shadow: var(--bs);
   position: relative;
   display: flex;
@@ -22,10 +22,10 @@ const Item = styled.div`
   .buttonList {
     display: grid;
     width: 100%;
-    border-top: 1px solid var(--lightGray);
+    border-top: 1px solid var(--lightBlue);
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 1px;
-    background: var(--lightGray);
+    background: var(--lightBlue);
     & > * {
       background: white;
       border: 0;
