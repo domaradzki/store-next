@@ -1,22 +1,60 @@
+import { useMutation } from '@apollo/client';
+import gql from 'graphql-tag';
+import Router from 'next/router';
 import useForm from '../lib/useForm';
+import ErrorMessage from './ErrorMessage';
+import { ALL_PRODUCTS_QUERY } from './Products';
 import Form from './styles/Form';
+
+const CREATE_PRODUCT_MUTATION = gql`
+  mutation CREATE_PRODUCT_MUTATION(
+    $name: String!
+    $description: String!
+    $price: Int!
+    $image: Upload
+  ) {
+    createProduct(
+      data: {
+        name: $name
+        description: $description
+        price: $price
+        status: "AVAILABLE"
+        photo: { create: { image: $image, altText: $name } }
+      }
+    ) {
+      id
+      price
+      description
+      name
+    }
+  }
+`;
 
 function CreateProduct() {
   const { inputs, handleChange, resetForm, clearForm } = useForm({
-    name: 'Kosmetyk',
+    name: '',
     description: '',
     price: 0,
     image: '',
   });
+  const [createProduct, { loading, error, data }] = useMutation(
+    CREATE_PRODUCT_MUTATION,
+    { variables: inputs, refetchQueries: [{ query: ALL_PRODUCTS_QUERY }] }
+  );
 
   return (
     <Form
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        console.log(inputs);
+        const res = await createProduct();
+        clearForm();
+        Router.push({
+          pathname: `/product/${res.data.createProduct.id}`,
+        });
       }}
     >
-      <fieldset>
+      <ErrorMessage error={error} />
+      <fieldset disabled={loading} aria-busy={loading}>
         <label htmlFor="image">
           Image:
           <input type="file" id="image" name="image" onChange={handleChange} />
