@@ -2,63 +2,56 @@ import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import Form from './styles/Form';
 import useForm from '../lib/useForm';
-import { CURRENT_USER_QUERY } from './User';
 import ErrorMessage from './ErrorMessage';
 
-const REGISTRATION_MUTATION = gql`
-  mutation REGISTRATION_MUTATION(
-    $name: String!
+const RESET_MUTATION = gql`
+  mutation RESET_MUTATION(
     $email: String!
     $password: String!
+    $token: String!
   ) {
-    createUser(data: { name: $name, email: $email, password: $password }) {
-      id
-      email
-      name
+    redeemUserPasswordResetToken(
+      email: $email
+      token: $token
+      password: $password
+    ) {
+      code
+      message
     }
   }
 `;
 
-export default function Registration() {
+export default function Reset({ token }) {
   const { inputs, handleChange, resetForm } = useForm({
-    name: '',
     email: '',
     password: '',
+    token,
   });
 
-  const [register, { error, data, loading }] = useMutation(
-    REGISTRATION_MUTATION,
-    {
-      variables: inputs,
-      // refetch the currently logged in user
-      // refetchQueries: [{ query: CURRENT_USER_QUERY }],
-    }
-  );
+  const [reset, { error, data, loading }] = useMutation(RESET_MUTATION, {
+    variables: inputs,
+  });
+
+  const successfullError = data?.redeemUserPasswordResetToken?.code
+    ? data?.redeemUserPasswordResetToken
+    : undefined;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(inputs);
-    const res = await register().catch(console.error);
+    const res = await reset().catch(console.error);
     console.log(res);
     resetForm();
   };
 
   return (
     <Form method="POST" onSubmit={handleSubmit}>
-      <h2>Register a new Account</h2>
-      <ErrorMessage error={error} />
+      <h2>Reset Your Password</h2>
+      <ErrorMessage error={error || successfullError} />
       <fieldset>
-        <label htmlFor="name">
-          Name
-          <input
-            type="name"
-            name="name"
-            placeholder="Your Name adress"
-            autoComplete="name"
-            value={inputs.name}
-            onChange={handleChange}
-          />
-        </label>
+        {data?.redeemUserPasswordResetToken === null && (
+          <p>Success! Yu can sign in!</p>
+        )}
         <label htmlFor="email">
           Email
           <input
@@ -81,7 +74,7 @@ export default function Registration() {
             onChange={handleChange}
           />
         </label>
-        <button type="submit">Register!</button>
+        <button type="submit">Reset!</button>
       </fieldset>
     </Form>
   );
