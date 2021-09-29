@@ -12,8 +12,8 @@ const RESET_MUTATION = gql`
   ) {
     redeemUserPasswordResetToken(
       email: $email
-      token: $token
       password: $password
+      token: $token
     ) {
       code
       message
