@@ -8,6 +8,7 @@ import { CartItem } from './schemas/CartItem';
 
 import 'dotenv/config';
 import { sendPasswordResetEmail } from './lib/mail';
+import { extendGraphqlSchema } from './mutations/index';
 
 import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
@@ -64,6 +65,7 @@ export default withAuth(
       ProductImage,
       CartItem,
     }),
+    extendGraphqlSchema,
     ui: {
       // Show this UI only for peaple who pass this test
       isAccessAllowed: ({ session }) => {
