@@ -1,12 +1,5 @@
 import { list } from '@keystone-next/keystone/schema';
-import {
-  text,
-  password,
-  relationship,
-  select,
-  integer,
-  virtual,
-} from '@keystone-next/fields';
+import { text, relationship, integer, virtual } from '@keystone-next/fields';
 import formatMoney from '../lib/formatMoney';
 
 export const Order = list({
