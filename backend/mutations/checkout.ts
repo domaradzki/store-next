@@ -52,8 +52,8 @@ export default async function checkout(
   });
   console.dir(user, { depth: null });
   // 2. calculate the total price for their order
-  const cartItmes = user.cart.filter((cartItem) => cartItem.product);
-  const amount = cartItmes.reduce(function (
+  const cartItems = user.cart.filter((cartItem) => cartItem.product);
+  const amount = cartItems.reduce(function (
     tally: number,
     cartItem: CartItemCreateInput
   ) {
@@ -74,5 +74,27 @@ export default async function checkout(
       throw new Error(err.message);
     });
   // 4. convert the cartitems to orderitems
+  const orderItems = cartItems.map((cartItem) => {
+    const orderItem = {
+      name: cartItem.product.name,
+      description: cartItem.product.description,
+      price: cartItem.product.price,
+      quantity: cartItem.quantity,
+      photo: { connect: { id: cartItem.product.photo.id } },
+    };
+    return orderItem;
+  });
   // 5. create the order and return it
+  const order = await context.lists.Order.createOne({
+    data: {
+      total: charge.amount,
+      charge: charge.id,
+      items: { create: orderItems },
+      user: { connect: { id: userId } },
+    },
+  });
+  // 6. clean any old cart items
+  const cartItemIds = user.cart.map((cartItem) => cartItem.id);
+  await context.lists.CartItem.deleteMany({ ids: cartItemIds });
+  return order;
 }
