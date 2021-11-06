@@ -4,6 +4,7 @@ import {
   withItemData,
   statelessSessions,
 } from '@keystone-next/keystone/session';
+import { Role } from './schemas/Role';
 import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
 
@@ -17,6 +18,7 @@ import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
 import { User } from './schemas/User';
 import { insertSeedData } from './seed-data';
+import { permissionsList } from './schemas/fields';
 
 const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/';
 
@@ -69,17 +71,17 @@ export default withAuth(
       CartItem,
       OrderItem,
       Order,
+      Role,
     }),
     extendGraphqlSchema,
     ui: {
       // Show this UI only for peaple who pass this test
-      isAccessAllowed: ({ session }) => {
-        console.log(session);
-        return !!session?.data;
-      },
+      isAccessAllowed: ({ session }) =>
+        // console.log(session);
+        !!session?.data,
     },
     session: withItemData(statelessSessions(sessionConfig), {
-      User: 'id',
+      User: `id nam email role { ${permissionsList.join(' ')} }`,
     }),
   })
 );
