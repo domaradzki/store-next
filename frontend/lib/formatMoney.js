@@ -8,6 +8,6 @@ export default function formatMoney(amount = 0) {
     options.minimumFractionDigits = 0;
   }
 
-  const formatter = Intl.NumberFormat('pl-PL', options);
+  const formatter = new Intl.NumberFormat('pl-PL', options);
   return formatter.format(amount / 100);
 }
