@@ -2,10 +2,9 @@ import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import Form from './styles/Form';
 import useForm from '../lib/useForm';
-import { CURRENT_USER_QUERY } from './User';
 import ErrorMessage from './ErrorMessage';
 
-const REGISTRATION_MUTATION = gql`
+export const REGISTRATION_MUTATION = gql`
   mutation REGISTRATION_MUTATION(
     $name: String!
     $email: String!
@@ -37,9 +36,7 @@ export default function Registration() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
     const res = await register().catch(console.error);
-    console.log(res);
     resetForm();
   };
 
@@ -53,7 +50,7 @@ export default function Registration() {
           <input
             type="name"
             name="name"
-            placeholder="Your Name adress"
+            placeholder="Your name"
             autoComplete="name"
             value={inputs.name}
             onChange={handleChange}
