@@ -6,7 +6,7 @@ import ErrorMessage from './ErrorMessage';
 import { ALL_PRODUCTS_QUERY } from './Products';
 import Form from './styles/Form';
 
-const CREATE_PRODUCT_MUTATION = gql`
+export const CREATE_PRODUCT_MUTATION = gql`
   mutation CREATE_PRODUCT_MUTATION(
     $name: String!
     $description: String!

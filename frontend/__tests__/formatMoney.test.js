@@ -11,3 +11,6 @@ describe('format Money function', () => {
     expect('100 zł').toEqual('100 zł');
   });
 });
+
+// to fix it go to the link
+// https://testing-library.com/docs/example-react-intl/
