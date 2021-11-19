@@ -16,7 +16,8 @@ const SINGLE_ORDER_QUERY = gql`
       }
       items {
         id
-        namedescription
+        name
+        description
         price
         quantity
         photo {

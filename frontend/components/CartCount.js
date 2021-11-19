@@ -6,15 +6,18 @@ const Dot = styled.div`
   color: var(--white);
   border-radius: 50%;
   padding: 0.5rem;
-  line-height: 2rem;
-  min-width: 3rem;
-  margin-left: 1rem;
+  line-height: 1.2rem;
+  min-width: 2rem;
+  margin-left: 1.2rem;
   font-feature-settings: 'tnum';
   font-variant-numeric: tabular-nums;
+  user-select: none;
 `;
 
 const AnimationStyles = styled.span`
-  position: relative;
+  position: absolute;
+  top: 12px;
+  left: 12px;
   .count {
     display: block;
     position: relative;

@@ -20,7 +20,8 @@ const USER_ORDERS_QUERY = gql`
       }
       items {
         id
-        namedescription
+        name
+        description
         price
         quantity
         photo {
@@ -73,7 +74,7 @@ export default function OrdersPage() {
                   {order.items.map((item) => (
                     <img
                       key={`image-${item.id}`}
-                      srs={item.photo?.image?.publicUrlTransformed}
+                      src={item.photo?.image?.publicUrlTransformed}
                       alt={item.name}
                     />
                   ))}

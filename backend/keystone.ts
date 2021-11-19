@@ -7,18 +7,17 @@ import {
 import { Role } from './schemas/Role';
 import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
-
 import { CartItem } from './schemas/CartItem';
+import { Product } from './schemas/Product';
+import { ProductImage } from './schemas/ProductImage';
+import { User } from './schemas/User';
+import { permissionsList } from './schemas/fields';
 
 import 'dotenv/config';
 import { sendPasswordResetEmail } from './lib/mail';
 import { extendGraphqlSchema } from './mutations/index';
 
-import { Product } from './schemas/Product';
-import { ProductImage } from './schemas/ProductImage';
-import { User } from './schemas/User';
 import { insertSeedData } from './seed-data';
-import { permissionsList } from './schemas/fields';
 
 const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/';
 
@@ -37,7 +36,6 @@ const { withAuth } = createAuth({
   },
   passwordResetLink: {
     async sendToken(args) {
-      console.log(args);
       // send email
       await sendPasswordResetEmail(args.token, args.identity);
     },
@@ -81,7 +79,7 @@ export default withAuth(
         !!session?.data,
     },
     session: withItemData(statelessSessions(sessionConfig), {
-      User: `id nam email role { ${permissionsList.join(' ')} }`,
+      User: `id name email role { ${permissionsList.join(' ')} }`,
     }),
   })
 );
