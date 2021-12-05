@@ -1,8 +1,8 @@
 {
-  "name": "sick-fits-backend",
-  "version": "2.0.0",
+  "name": "gruby-warkocz",
+  "version": "1.1.0",
   "private": true,
-  "author": "Wes Bos",
+  "author": "Grzegorz Domaradzki",
   "license": "MIT",
   "scripts": {
     "dev": "keystone-next",
@@ -10,8 +10,13 @@
   },
   "eslintConfig": {
     "extends": "wesbos/typescript.js",
+    "plugins": [
+      "@typescript-eslint"
+    ],
     "rules": {
-      "@typescript-eslint/no-unsafe-assignment": 0
+      "@typescript-eslint/no-unsafe-assignment": 0,
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off"
     }
   },
   "babel": {

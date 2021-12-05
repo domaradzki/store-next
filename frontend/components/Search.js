@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import debounce from 'lodash.debounce';
 import { useRouter } from 'next/router';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
+import SearchIcon from '../assets/images/search.svg';
 
 const SEARCH_PRODUCTS_QUERY = gql`
   query SEARCH_PRODUCTS_QUERY($searchTerm: String) {
@@ -63,10 +64,11 @@ export default function Search() {
   return (
     <SearchStyles>
       <div {...getComboboxProps()}>
+        <SearchIcon className="search-icon" />
         <input
           {...getInputProps({
             type: 'search',
-            placeholder: 'Serach for an Item',
+            placeholder: 'szukaj',
             id: 'search',
             className: loading ? 'loading' : ' ',
           })}

@@ -1,7 +1,6 @@
 import { permissionsList } from './schemas/fields';
 import { ListAccessArgs } from './types';
 // at it's simplest , the access control returns a yes ot no value depending on the users session
-
 export function isSignedIn({ session }: ListAccessArgs) {
   return !!session;
 }
@@ -22,7 +21,6 @@ export const permissions = {
 
 // Role based function
 // Rules can return a boolean - yes or no - or a filter which limits which products they can CRUD
-
 export const rules = {
   canManageProducts({ session }: ListAccessArgs) {
     if (!isSignedIn({ session })) {

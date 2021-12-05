@@ -21,13 +21,14 @@ export const GlobalStyles = createGlobalStyle`
 }
 html {
   --black: #03120e;
+  --lightBlack: #03120e4d;
   --darkGreen:#072725;
   --green:#147072;
   --blue:#21b8bf;
   --lightBlue:#8fdbde;
   --white:#fdfdfd;
   --pink:#803e62;
-  --maxWidth:1000px;
+  --maxWidth:1280px;
   --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
   box-sizing:border-box;
   font-size:10px;
@@ -54,6 +55,9 @@ button{
   font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
 }
 h1,h2,h3,h4,h5,h6{
-  font-family: 'Merriweather', serif, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+  margin:0;
+  padding:0;
+  /* font-family: 'Merriweather', serif, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif */
+ font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', serif;
 }
 `;

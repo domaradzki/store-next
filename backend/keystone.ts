@@ -12,6 +12,7 @@ import { Product } from './schemas/Product';
 import { ProductImage } from './schemas/ProductImage';
 import { User } from './schemas/User';
 import { permissionsList } from './schemas/fields';
+import { ListAccessArgs } from './types';
 
 import 'dotenv/config';
 import { sendPasswordResetEmail } from './lib/mail';
@@ -74,9 +75,7 @@ export default withAuth(
     extendGraphqlSchema,
     ui: {
       // Show this UI only for peaple who pass this test
-      isAccessAllowed: ({ session }) =>
-        // console.log(session);
-        !!session?.data,
+      isAccessAllowed: ({ session }: ListAccessArgs) => !!session?.data,
     },
     session: withItemData(statelessSessions(sessionConfig), {
       User: `id name email role { ${permissionsList.join(' ')} }`,

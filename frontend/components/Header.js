@@ -15,7 +15,6 @@ import Nav from './Nav';
 import Search from './Search';
 
 const StyledHeader = styled.header`
-  border-bottom: 2px solid var(--black, black);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,35 +27,24 @@ const StyledHeader = styled.header`
     max-width: 1280px;
     width: 100%;
   }
-  .account-bar {
+  .sub-bar {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0;
-    flex: none;
-    order: 0;
     align-self: stretch;
-    flex-grow: 0;
-    margin: 20px 0;
+    margin: 0;
   }
   .menu-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-    flex: none;
-    order: 0;
-    align-self: stretch;
-    flex-grow: 0;
-    margin: 5px 0%;
+    border-bottom: 2px solid var(--lightBlack, black);
+  }
+  .search-bar {
+    margin-top: 10px;
   }
   .logo {
-    width: 250px;
+    width: 200px;
     flex: none;
     order: 0;
-    flex-grow: 0;
     margin: 0 30px;
   }
   .account-items {
@@ -73,10 +61,6 @@ const StyledHeader = styled.header`
     position: relative;
     margin-right: 10px;
   }
-  .sub-bar {
-    display: grid;
-    grid-template-columns: 1fr auto;
-  }
 `;
 
 export default function Header() {
@@ -89,7 +73,7 @@ export default function Header() {
   return (
     <StyledHeader>
       <div className="bar">
-        <div className="account-bar">
+        <div className="sub-bar">
           <div className="logo">
             <Logo />
           </div>
@@ -116,13 +100,16 @@ export default function Header() {
             )}
           </div>
         </div>
-        <div className="menu-bar">
+        <div className="sub-bar menu-bar">
           <Nav />
         </div>
+        <div className="sub-bar search-bar">
+          <div>
+            <Nav />
+          </div>
+          <Search />
+        </div>
       </div>
-      {/* <div className="sub-bar">
-        <Search />
-      </div> */}
       <Cart />
     </StyledHeader>
   );
