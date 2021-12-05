@@ -25,19 +25,19 @@ export default function Pagination({ page }) {
     <PaginationStyles data-testid="pagination">
       <Head>
         <title>
-          MarocanOil - Page {page} of {pageCount}
+          Gruby Warkocz - Strona {page} z {pageCount}
         </title>
       </Head>
       <Link href={`/products/${page - 1}`}>
-        <a aria-disabled={page <= 1}>← Prev</a>
+        <a aria-disabled={page <= 1}>← Poprzednia</a>
       </Link>
       <p>
-        Page {page} of <span data-testid="pageCount"> {pageCount}</span>
+        Strona {page} z <span data-testid="pageCount"> {pageCount}</span>
       </p>
-      <p>{count} Items Total</p>
+      <p>Razem {count} produktów</p>
 
       <Link href={`/products/${page + 1}`}>
-        <a aria-disabled={page >= pageCount}>Next →</a>
+        <a aria-disabled={page >= pageCount}>Następna →</a>
       </Link>
     </PaginationStyles>
   );

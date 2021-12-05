@@ -1,7 +1,7 @@
 {
-  "name": "sick-fits-frontend",
-  "version": "2.0.0",
-  "description": "Sick Fits! An example React, GraphQL, Next and Apollo",
+  "name": "gruby-warkocz",
+  "version": "1.0.0",
+  "description": "SKlep internetowy z kosmetykami do włosów",
   "main": "index.js",
   "scripts": {
     "dev": "next -p 7777",
@@ -17,9 +17,11 @@
     "@apollo/react-ssr": "^4.0.0",
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.11.0",
+    "@styled-icons/material": "^10.34.0",
     "apollo-upload-client": "^14.1.3",
     "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-styled-components": "^1.12.0",
+    "babel-preset-next": "^1.4.0",
     "date-fns": "^2.16.1",
     "downshift": "^6.0.6",
     "graphql": "^15.4.0",

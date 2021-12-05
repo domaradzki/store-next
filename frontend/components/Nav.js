@@ -4,7 +4,6 @@ import { useUser } from './User';
 
 export default function Nav() {
   const user = useUser();
-
   return (
     <NavStyles>
       <Link href="/">Home</Link>

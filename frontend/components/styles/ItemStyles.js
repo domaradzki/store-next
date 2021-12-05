@@ -9,6 +9,7 @@ const ItemStyles = styled.div`
   height: 400px;
   .item-image {
     width: 100%;
+    user-select: none;
     img {
       width: 100%;
       height: 300px;

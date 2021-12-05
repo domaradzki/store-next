@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { ShoppingCart, Person, Favorite } from '@styled-icons/material';
 import Logo from '../public/static/images/logo.svg';
-import CartImage from '../assets/images/cart.svg';
-import Person from '../assets/images/person.svg';
-import Heart from '../assets/images/heart.svg';
 
 import Cart from './Cart';
 import CartCount from './CartCount';
@@ -81,14 +79,15 @@ export default function Header() {
             {user && (
               <>
                 <button className="btn" type="button">
-                  <Heart />
+                  <Favorite size="38" color="#03120e" title="Ulubione" />
                 </button>
                 <button className="btn" type="button">
-                  <Person />
+                  <Person size="38" color="#03120e" title="Profil" />
                 </button>
                 {/* <SignOut /> */}
+
                 <button className="btn" type="button" onClick={openCart}>
-                  <CartImage />
+                  <ShoppingCart size="38" color="#03120e" title="Koszyk" />
                   {!!count && <CartCount count={count} />}
                 </button>
               </>

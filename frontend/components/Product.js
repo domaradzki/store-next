@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Delete, Edit } from '@styled-icons/material';
 import formatMoney from '../lib/formatMoney';
 import AddToCart from './AddToCart';
 import DeleteProduct from './DeleteProduct';
@@ -8,8 +9,12 @@ import DescriptionItem from './styles/DescriptionItem';
 
 import PriceTag from './styles/PriceTag';
 import TitleItem from './styles/TitleItem';
+import { useUser } from './User';
 
 export default function Product({ product }) {
+  const user = useUser();
+  console.log(user);
+  const { canManageProducts } = user?.role;
   return (
     <ItemStyles>
       <div className="item-image">
@@ -24,14 +29,21 @@ export default function Product({ product }) {
           <Link href={`/product/${product.id}`}>{product.name}</Link>
         </TitleItem>
         <PriceTag>{formatMoney(product.price)}</PriceTag>
-        <div className="buttonList">
-          <Link href={{ pathname: '/update', query: { id: product.id } }}>
-            Edit 🖉
-          </Link>
-          <AddToCart id={product.id} />
-          <DeleteProduct id={product.id}>Delete</DeleteProduct>
-        </div>
+        <AddToCart id={product.id} />
       </DescriptionItem>
+      {canManageProducts && (
+        <div className="buttonList">
+          <button type="button">
+            <Link href={{ pathname: '/update', query: { id: product.id } }}>
+              <Edit size="18" color="#03120e" title="Edytuj" />
+            </Link>
+          </button>
+
+          <DeleteProduct id={product.id}>
+            <Delete size="18" color="#03120e" title="Usuń" />
+          </DeleteProduct>
+        </div>
+      )}
     </ItemStyles>
   );
 }

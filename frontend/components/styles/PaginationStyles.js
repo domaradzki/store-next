@@ -8,18 +8,18 @@ const PaginationStyles = styled.div`
   justify-content: center;
   align-content: center;
   margin: 2rem 0;
-  border: 1px solid var(--lightBlue);
-  border-radius: 10px;
+  color: var(--lightBlue);
+  user-select: none;
   & > * {
     margin: 0;
     padding: 15px 30px;
-    border-right: 1px solid var(--lightBlue);
+    color: var(--lightBlue);
     &:last-child {
       border-right: 0;
     }
   }
   a[aria-disabled='true'] {
-    color: grey;
+    color: var(--lightBlue);
     pointer-events: none;
   }
 `;
