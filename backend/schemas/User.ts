@@ -27,6 +27,7 @@ export const User = list({
         itemView: { fieldMode: 'read' },
       },
     }),
+    favorite: relationship({ ref: 'Product.isFavorite', many: true }),
     orders: relationship({ ref: 'Order.user', many: true }),
     role: relationship({
       ref: 'Role.assignedTo',

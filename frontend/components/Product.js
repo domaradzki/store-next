@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import styled from 'styled-components';
+
 import { Delete, Edit } from '@styled-icons/material';
 import formatMoney from '../lib/formatMoney';
 import AddToCart from './AddToCart';
@@ -10,6 +12,10 @@ import DescriptionItem from './styles/DescriptionItem';
 import PriceTag from './styles/PriceTag';
 import TitleItem from './styles/TitleItem';
 import { useUser } from './User';
+
+const EditButton = styled.button`
+  cursor: pointer;
+`;
 
 export default function Product({ product }) {
   const user = useUser();
@@ -33,11 +39,11 @@ export default function Product({ product }) {
       </DescriptionItem>
       {canManageProducts && (
         <div className="buttonList">
-          <button type="button">
+          <EditButton type="button">
             <Link href={{ pathname: '/update', query: { id: product.id } }}>
               <Edit size="18" color="#03120e" title="Edytuj" />
             </Link>
-          </button>
+          </EditButton>
 
           <DeleteProduct id={product.id}>
             <Delete size="18" color="#03120e" title="Usuń" />

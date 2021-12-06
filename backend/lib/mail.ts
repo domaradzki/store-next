@@ -1,5 +1,4 @@
 import { createTransport, getTestMessageUrl } from 'nodemailer';
-import { MailResponse } from './mail';
 
 const transport = createTransport({
   host: process.env.MAIL_HOST,

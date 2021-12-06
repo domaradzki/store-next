@@ -79,15 +79,15 @@ export default function Header() {
             {user && (
               <>
                 <button className="btn" type="button">
-                  <Favorite size="38" color="#03120e" title="Ulubione" />
+                  <Favorite size="32" color="#03120e" title="Ulubione" />
                 </button>
                 <button className="btn" type="button">
-                  <Person size="38" color="#03120e" title="Profil" />
+                  <Person size="32" color="#03120e" title="Profil" />
                 </button>
                 {/* <SignOut /> */}
 
                 <button className="btn" type="button" onClick={openCart}>
-                  <ShoppingCart size="38" color="#03120e" title="Koszyk" />
+                  <ShoppingCart size="32" color="#03120e" title="Koszyk" />
                   {!!count && <CartCount count={count} />}
                 </button>
               </>

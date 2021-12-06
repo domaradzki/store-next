@@ -65,8 +65,12 @@
   },
   "eslintConfig": {
     "extends": [
-      "wesbos"
-    ]
+      "wesbos",
+      "prettier"
+    ],
+    "rules": {
+      "react/jsx-props-no-spreading": 0
+    }
   },
   "jest": {
     "setupFilesAfterEnv": [

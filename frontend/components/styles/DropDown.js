@@ -33,13 +33,13 @@ const glow = keyframes`
 
 const SearchStyles = styled.div`
   position: relative;
+  user-select: none;
   .search-icon {
     position: absolute;
-    top: 10px;
+    top: 7px;
     left: 10px;
     color: var(--lightBlack);
   }
-
   input {
     width: 100%;
     padding: 10px 10px 10px 35px;

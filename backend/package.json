@@ -16,7 +16,8 @@
     "rules": {
       "@typescript-eslint/no-unsafe-assignment": 0,
       "@typescript-eslint/ban-ts-comment": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "off"
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/unbound-method": "off"
     }
   },
   "babel": {
@@ -40,7 +41,6 @@
     ]
   },
   "dependencies": {
-    "@keystone-next/admin-ui": "^8.0.1",
     "@keystone-next/auth": "^14.0.0",
     "@keystone-next/cloudinary": "^2.0.9",
     "@keystone-next/fields": "^4.1.1",
@@ -75,6 +75,5 @@
   },
   "engines": {
     "node": ">=14.0.0"
-  },
-  "repository": "https://github.com/wesbos/advanced-react"
+  }
 }

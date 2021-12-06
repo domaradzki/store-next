@@ -3,8 +3,10 @@ import { resetIdCounter, useCombobox } from 'downshift';
 import gql from 'graphql-tag';
 import debounce from 'lodash.debounce';
 import { useRouter } from 'next/router';
+import { Search as SearchIcon } from '@styled-icons/material';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
-import SearchIcon from '../assets/images/search.svg';
+
+// import SearchIcon from '../assets/images/search.svg';
 
 const SEARCH_PRODUCTS_QUERY = gql`
   query SEARCH_PRODUCTS_QUERY($searchTerm: String) {
@@ -64,7 +66,12 @@ export default function Search() {
   return (
     <SearchStyles>
       <div {...getComboboxProps()}>
-        <SearchIcon className="search-icon" />
+        <SearchIcon
+          className="search-icon"
+          size="23"
+          color="#03120e"
+          title="Szukaj"
+        />
         <input
           {...getInputProps({
             type: 'search',

@@ -4,6 +4,9 @@ import {
   withItemData,
   statelessSessions,
 } from '@keystone-next/keystone/session';
+import { Discount } from './schemas/Discount';
+import { Brand } from './schemas/Brand';
+import { Category } from './schemas/Category';
 import { Role } from './schemas/Role';
 import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
@@ -67,6 +70,9 @@ export default withAuth(
       User,
       Product,
       ProductImage,
+      Category,
+      Brand,
+      Discount,
       CartItem,
       OrderItem,
       Order,

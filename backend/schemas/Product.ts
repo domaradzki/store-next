@@ -1,5 +1,11 @@
 import { list } from '@keystone-next/keystone/schema';
-import { text, relationship, select, integer } from '@keystone-next/fields';
+import {
+  text,
+  relationship,
+  select,
+  integer,
+  checkbox,
+} from '@keystone-next/fields';
 import { rules, isSignedIn } from '../access';
 
 export const Product = list({
@@ -16,6 +22,16 @@ export const Product = list({
         displayMode: 'textarea',
       },
     }),
+    brand: relationship({
+      ref: 'Brand.product',
+    }),
+    category: relationship({
+      ref: 'Category.product',
+    }),
+    code: text(),
+    discount: relationship({ ref: 'Discount.product' }),
+    new: checkbox({ isRequired: true }),
+    isFavorite: relationship({ ref: 'User.favorite', many: true }),
     photo: relationship({
       ref: 'ProductImage.product',
       ui: {
@@ -43,7 +59,7 @@ export const Product = list({
     user: relationship({
       ref: 'User.products',
       defaultValue: ({ context }) => ({
-        connect: { id: context.session.itemId },
+        connect: { id: context.session?.itemId },
       }),
     }),
   },
