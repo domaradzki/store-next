@@ -11,8 +11,21 @@ export const ALL_PRODUCTS_QUERY = gql`
       name
       price
       description
+      brand {
+        name
+      }
+      code
+      category {
+        name
+      }
+      new
+      discount {
+        name
+        percent
+      }
       photo {
         id
+        altText
         image {
           publicUrlTransformed
         }
@@ -36,7 +49,6 @@ export default function Products({ page }) {
   });
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-
   return (
     <div>
       <ProductList>

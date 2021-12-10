@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import { KeystoneContext } from '@keystone-next/types';
-import { Product } from '../schemas/Product';
 import { Session } from '../types';
 import { CartItemCreateInput } from '../.keystone/schema-types';
 

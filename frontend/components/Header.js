@@ -34,7 +34,7 @@ const StyledHeader = styled.header`
     margin: 0;
   }
   .menu-bar {
-    border-bottom: 2px solid var(--lightBlack, black);
+    border-bottom: 1px solid var(--lightBlack, black);
   }
   .search-bar {
     margin-top: 10px;

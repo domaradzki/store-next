@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const PriceTag = styled.span`
-  color: var(--blue);
+  color: var(--pink);
   font-weight: 700;
   line-height: 1;
   font-size: 1.4rem;

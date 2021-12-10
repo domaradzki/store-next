@@ -24,10 +24,10 @@ html {
   --lightBlack: #03120e4d;
   --darkGreen:#072725;
   --green:#147072;
-  --blue:#21b8bf;
-  --lightBlue:#8fdbde;
+  --blue:#23263B;
+  --lightBlue:#89D9D3;
   --white:#fdfdfd;
-  --pink:#803e62;
+  --pink:#F82CAA;
   --maxWidth:1280px;
   --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
   box-sizing:border-box;

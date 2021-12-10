@@ -4,6 +4,7 @@ import {
   withItemData,
   statelessSessions,
 } from '@keystone-next/keystone/session';
+import { FavoriteItem } from './schemas/FavoriteItem';
 import { Discount } from './schemas/Discount';
 import { Brand } from './schemas/Brand';
 import { Category } from './schemas/Category';
@@ -49,6 +50,7 @@ const { withAuth } = createAuth({
 export default withAuth(
   config({
     // @ts-ignore
+    title: 'Dupa',
     server: {
       cors: {
         origin: [process.env.FRONTEND_URL],
@@ -71,6 +73,7 @@ export default withAuth(
       Product,
       ProductImage,
       Category,
+      FavoriteItem,
       Brand,
       Discount,
       CartItem,

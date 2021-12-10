@@ -12,6 +12,9 @@ import DescriptionItem from './styles/DescriptionItem';
 import PriceTag from './styles/PriceTag';
 import TitleItem from './styles/TitleItem';
 import { useUser } from './User';
+import Promotion from './styles/Promotion';
+import NewItem from './styles/NewItem';
+import Favorite from './Favorite';
 
 const EditButton = styled.button`
   cursor: pointer;
@@ -19,7 +22,7 @@ const EditButton = styled.button`
 
 export default function Product({ product }) {
   const user = useUser();
-  console.log(user);
+  // console.log(user);
   const { canManageProducts } = user?.role;
   return (
     <ItemStyles>
@@ -28,9 +31,16 @@ export default function Product({ product }) {
           src={product?.photo?.image?.publicUrlTransformed}
           alt={product?.name}
         />
+        {product?.discount && (
+          <Promotion>{`- ${product?.discount?.percent} %`}</Promotion>
+        )}
+        {product?.new && <NewItem>Nowość</NewItem>}
+        <Favorite id={product.id} />
       </div>
       <DescriptionItem>
-        <h4>brand / type</h4>
+        <h4>
+          {product?.brand?.name} / {product?.category?.name}
+        </h4>
         <TitleItem>
           <Link href={`/product/${product.id}`}>{product.name}</Link>
         </TitleItem>

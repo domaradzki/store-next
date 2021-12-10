@@ -29,16 +29,16 @@ export default function Pagination({ page }) {
         </title>
       </Head>
       <Link href={`/products/${page - 1}`}>
-        <a aria-disabled={page <= 1}>← Poprzednia</a>
+        <a aria-disabled={page <= 1}>←</a>
       </Link>
       <p>
-        Strona {page} z <span data-testid="pageCount"> {pageCount}</span>
+        {page} / <span data-testid="pageCount">{pageCount}</span>
       </p>
-      <p>Razem {count} produktów</p>
 
       <Link href={`/products/${page + 1}`}>
-        <a aria-disabled={page >= pageCount}>Następna →</a>
+        <a aria-disabled={page >= pageCount}>→</a>
       </Link>
+      <p>Razem {count} produktów</p>
     </PaginationStyles>
   );
 }

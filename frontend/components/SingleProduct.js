@@ -22,10 +22,22 @@ const ProductStyles = styled.div`
 export const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {
     Product(where: { id: $id }) {
+      id
       name
       price
       description
-      id
+      brand {
+        name
+      }
+      code
+      category {
+        name
+      }
+      new
+      discount {
+        name
+        percent
+      }
       photo {
         altText
         image {

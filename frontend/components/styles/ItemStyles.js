@@ -8,6 +8,7 @@ const ItemStyles = styled.div`
   flex-direction: column;
   height: 400px;
   .item-image {
+    position: relative;
     width: 100%;
     user-select: none;
     img {

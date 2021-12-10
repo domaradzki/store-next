@@ -31,7 +31,6 @@ export const Product = list({
     code: text(),
     discount: relationship({ ref: 'Discount.product' }),
     new: checkbox({ isRequired: true }),
-    isFavorite: relationship({ ref: 'User.favorite', many: true }),
     photo: relationship({
       ref: 'ProductImage.product',
       ui: {
