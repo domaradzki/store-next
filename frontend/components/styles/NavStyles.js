@@ -35,11 +35,10 @@ const NavStyles = styled.ul`
       }
     }
   }
-  @media (max-width: 1300px) {
-    border-top: 1px solid var(--lightBlue);
+  @media (max-width: 1280px) {
     width: 100%;
-    justify-content: center;
     font-size: 1.5rem;
+    padding: 20px;
   }
 `;
 

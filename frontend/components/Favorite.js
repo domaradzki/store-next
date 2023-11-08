@@ -32,6 +32,12 @@ const Favorite = ({ id = '' }) => {
       refetchQueries: [{ query: CURRENT_USER_QUERY }],
     }
   );
+  if (user === null)
+    return (
+      <Container>
+        <FavoriteBorder size="22" title="ulubione" color="#23263B" />
+      </Container>
+    );
   const { favorite } = user;
   const isFavorite = favorite.map((item) => item.product.id).includes(id);
   return (

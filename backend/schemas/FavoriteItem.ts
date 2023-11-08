@@ -5,9 +5,9 @@ import { rules, isSignedIn } from '../access';
 export const FavoriteItem = list({
   access: {
     create: isSignedIn,
-    read: rules.canOrder,
-    update: rules.canOrder,
-    delete: rules.canOrder,
+    read: () => true,
+    update: rules.canManageUsers,
+    delete: rules.canManageUsers,
   },
   ui: { listView: { initialColumns: ['product', 'user'] } },
   fields: {

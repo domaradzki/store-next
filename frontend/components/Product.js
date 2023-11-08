@@ -23,7 +23,7 @@ const EditButton = styled.button`
 export default function Product({ product }) {
   const user = useUser();
   // console.log(user);
-  const { canManageProducts } = user?.role;
+  const canManageProducts = user?.role?.canManageProducts || null;
   return (
     <ItemStyles>
       <div className="item-image">

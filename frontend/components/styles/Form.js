@@ -13,6 +13,9 @@ const loading = keyframes`
 `;
 
 const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
   background: rgba(0, 0, 0, 0.02);
   border: 5px solid var(--white);
@@ -22,14 +25,14 @@ const Form = styled.form`
   font-weight: 600;
   label {
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
   }
   input,
   textarea,
   select {
     width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
+    padding: 6px 16px;
+    font-size: 1.5rem;
     border: 1px solid black;
     &:focus {
       outline: 0;
@@ -42,9 +45,10 @@ const Form = styled.form`
     background: var(--blue);
     color: var(--white);
     border: 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
-    padding: 0.5rem 1.2rem;
+    padding: 6px 16px;
+    border-radius: 2px;
   }
   fieldset {
     border: 0;
@@ -54,7 +58,7 @@ const Form = styled.form`
       opacity: 0.5;
     }
     &::before {
-      height: 10px;
+      height: 3px;
       content: '';
       display: block;
       background-image: linear-gradient(

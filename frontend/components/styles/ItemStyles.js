@@ -29,15 +29,17 @@ const ItemStyles = styled.div`
   .buttonList {
     display: grid;
     width: 100%;
-    border-top: 1px solid var(--lightBlue);
+    border-top: 1px solid var(--blue);
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 1px;
-    background: var(--lightBlue);
     & > * {
       background: white;
       border: 0;
       font-size: 1rem;
       padding: 1rem;
+    }
+    button:first-child {
+      border-right: 1px solid var(--blue);
     }
   }
 `;
